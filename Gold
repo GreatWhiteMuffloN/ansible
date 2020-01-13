@@ -1,0 +1,18 @@
+---
+- hosts: all
+
+  tasks:
+    - name: Create Gold Container
+      proxmox:
+        node: antaboga
+        api_user: root@pam
+        api_password:
+        api_host:
+        password: 123456
+        ostemplate: 'iso:vztmpl/ubuntu-18.04-standard_18.04.1-1_amd64.tar.gz'
+        storage: vmstorage
+        memory: 2048
+        cores: 2
+        disk: 20
+        swap: 1024
+        netif: '{"net0":"name=eth0,ip=dhcp,bridge=vmbr0"}'
